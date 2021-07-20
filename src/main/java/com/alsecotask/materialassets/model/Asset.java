@@ -13,10 +13,13 @@ import javax.persistence.*;
 @ToString
 public class Asset {
     @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private double price;
     @ManyToOne
+    @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
+
 
 }

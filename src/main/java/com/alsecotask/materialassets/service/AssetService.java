@@ -19,4 +19,23 @@ public class AssetService {
         return assetRepository.findAll();
     }
 
+    public long getCount(){
+        return assetRepository.count();
+    }
+
+    public Long getCountById(Long id){
+        return assetRepository.countAssetByEmployee_Id(id);
+    }
+//
+//    public List<?> getAssetsByEmployee(){
+//       return assetRepository.getAssetsByEmployee();
+//    }
+
+    public Asset findByName(String name){
+       return assetRepository.findByNameQuery(name);
+    }
+    public void addAsset(Asset asset){
+        assetRepository.save(asset);
+    }
+
 }
