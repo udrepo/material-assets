@@ -8,17 +8,22 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@AllArgsConstructor
+
 @Service
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+
+    @Autowired
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     public List<Employee> getEmployee() {
         return employeeRepository.findAll();
     }
 
     public void addEmployee(Employee employee){
-        System.out.println(employee.getFName());
+        employeeRepository.save(employee);
     }
 }

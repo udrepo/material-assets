@@ -14,5 +14,7 @@ public class MaterialAssetsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MaterialAssetsApplication.class, args);
 
+		Employee employee = new Employee("Ulan", "Duisek");
+		System.out.println(employee);
 	}
 }

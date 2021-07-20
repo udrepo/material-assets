@@ -3,7 +3,7 @@ package com.alsecotask.materialassets.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.UUID;
+import java.util.List;
 
 @Entity
 @Table
@@ -24,11 +24,10 @@ public class Employee {
             generator = "employee_sequence"
     )
     private Long id;
-    private String fName;
-    private String lName;
-
-    public Employee(String fName, String lName) {
-        this.fName = fName;
-        this.lName = lName;
+    private String firstName;
+    private String lastName;
+    public Employee(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 }
