@@ -11,11 +11,10 @@ public interface AssetRepository extends JpaRepository<Asset, Long> {
 
     Long countAssetByEmployee_Id(Long id);
 
-//    @Query("SELECT Employee.id, Employee.firstName, sum(Asset .price), count(Asset .price)\n" +
-//            "FROM Asset \n" +
-//            "         LEFT JOIN Employee \n" +
-//            "                   ON Employee .id = Asset .employee.id group by Employee .id\n")
-//    List<?> getAssetsByEmployee();
+    @Query(value="SELECT employee.id, employee.first_name, sum(asset.price), count(asset.price)\n" +
+            "FROM employee LEFT JOIN asset\n" +
+            "ON employee.id = asset.employee_id group by employee.id", nativeQuery = true)
+    List<Object[]> getAssetsByEmployee();
 
     @Query(value = "SELECT * FROM Asset WHERE name = ?1", nativeQuery = true)
     Asset findByNameQuery(String name);

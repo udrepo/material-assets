@@ -26,10 +26,10 @@ public class AssetService {
     public Long getCountById(Long id){
         return assetRepository.countAssetByEmployee_Id(id);
     }
-//
-//    public List<?> getAssetsByEmployee(){
-//       return assetRepository.getAssetsByEmployee();
-//    }
+
+    public List<Object[]> getAssetsByEmployee(){
+       return assetRepository.getAssetsByEmployee();
+    }
 
     public Asset findByName(String name){
        return assetRepository.findByNameQuery(name);

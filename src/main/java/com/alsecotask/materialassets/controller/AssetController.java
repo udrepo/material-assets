@@ -35,10 +35,14 @@ public class AssetController {
         return assetService.findByName(name);
     }
 
+    @GetMapping("/employee-assets")
+    public List<Object[]> getAssetsByEmployee() {
+        System.out.println(assetService.getAssetsByEmployee());
+        return assetService.getAssetsByEmployee();
+    }
+
     @PostMapping
     public void addEmployee(@RequestBody Asset asset) {
         assetService.addAsset(asset);
     }
-
-
 }
