@@ -22,7 +22,7 @@ public class Employee {
     private String firstName;
     private String lastName;
     @OneToMany(targetEntity = Asset.class,cascade = CascadeType.ALL)
-    @JoinColumn(name ="employee_id",referencedColumnName = "id")
+    @JoinColumn(name="employee_id", referencedColumnName="id")
     private List<Asset> assets;
 
     public Employee(String firstName, String lastName) {

@@ -7,6 +7,8 @@ import com.alsecotask.materialassets.repository.AssetRepository;
 import com.alsecotask.materialassets.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +18,9 @@ import java.util.List;
 public class AssetService {
 
     private final AssetRepository assetRepository;
-    public List<Asset> getAsset() {
-        return assetRepository.findAll();
+    public Page<Asset> getAsset(Pageable pageable) {
+
+        return assetRepository.findAll(pageable);
     }
 
     public long getCount(){
@@ -33,6 +36,9 @@ public class AssetService {
     }
     public void addAsset(Asset asset){
         assetRepository.save(asset);
+    }
+    public void addAllAsset(List<Asset> asset){
+        assetRepository.saveAll(asset);
     }
 
 }

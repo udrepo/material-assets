@@ -4,6 +4,8 @@ package com.alsecotask.materialassets.controller;
 import com.alsecotask.materialassets.model.Asset;
 import com.alsecotask.materialassets.service.AssetService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +18,8 @@ public class AssetController {
     private final AssetService assetService;
 
     @GetMapping
-    public List<Asset> getAsset() {
-        return assetService.getAsset();
+    public Page<Asset> getAsset(Pageable pageable) {
+        return assetService.getAsset(pageable);
     }
 
     @GetMapping("/count")
@@ -36,7 +38,14 @@ public class AssetController {
     }
 
     @PostMapping
-    public void addEmployee(@RequestBody Asset asset) {
+    public void addAsset(@RequestBody Asset asset) {
         assetService.addAsset(asset);
     }
+
+    @PostMapping("/all")
+    public void addAllAsset(@RequestBody List<Asset> asset) {
+        assetService.addAllAsset(asset);
+    }
+
+
 }
