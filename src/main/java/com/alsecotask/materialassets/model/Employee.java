@@ -1,9 +1,11 @@
 package com.alsecotask.materialassets.model;
 
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table
@@ -14,20 +16,23 @@ import java.util.List;
 @ToString
 public class Employee {
     @Id
-    @SequenceGenerator(
-            name = "employee_sequence",
-            sequenceName = "employee_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "employee_sequence"
-    )
-    private Long id;
+   @GeneratedValue
+    @Type(type="uuid-char")
+    private UUID id;
     private String firstName;
     private String lastName;
+    @OneToMany(targetEntity = Asset.class,cascade = CascadeType.ALL)
+    @JoinColumn(name ="employee_id",referencedColumnName = "id")
+    private List<Asset> assets;
+
     public Employee(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Employee(String firstName, String lastName, List<Asset> assets) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.assets = assets;
     }
 }

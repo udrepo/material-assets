@@ -1,8 +1,10 @@
 package com.alsecotask.materialassets.model;
 
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table
@@ -14,12 +16,13 @@ import javax.persistence.*;
 public class Asset {
     @Id
     @GeneratedValue
-    private Long id;
+    @Type(type="uuid-char")
+    private UUID id;
     private String name;
     private double price;
-    @ManyToOne
-    @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employee;
 
-
+    public Asset(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
 }

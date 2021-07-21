@@ -2,7 +2,6 @@ package com.alsecotask.materialassets.service;
 
 import com.alsecotask.materialassets.model.Employee;
 import com.alsecotask.materialassets.repository.EmployeeRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +20,10 @@ public class EmployeeService {
 
     public List<Employee> getEmployee() {
         return employeeRepository.findAll();
+    }
+
+    public List<Object[]> getEmployeeAssets(){
+        return employeeRepository.getEmployeeAssets();
     }
 
 

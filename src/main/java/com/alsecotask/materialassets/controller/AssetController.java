@@ -25,20 +25,14 @@ public class AssetController {
         return assetService.getCount();
     }
 
-    @GetMapping("/count/{id}")
-    public Long getCountById(@PathVariable (value = "id") Long id) {
-        return assetService.getCountById(id);
-    }
+//    @GetMapping("/count/{id}")
+//    public Long getCountById(@PathVariable (value = "id") Long id) {
+//        return assetService.getCountById(id);
+//    }
 
     @GetMapping("/{name}")
     public Asset getByName(@PathVariable (value = "name") String name) {
         return assetService.findByName(name);
-    }
-
-    @GetMapping("/employee-assets")
-    public List<Object[]> getAssetsByEmployee() {
-        System.out.println(assetService.getAssetsByEmployee());
-        return assetService.getAssetsByEmployee();
     }
 
     @PostMapping

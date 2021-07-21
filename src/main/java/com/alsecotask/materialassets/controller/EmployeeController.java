@@ -20,6 +20,12 @@ public class EmployeeController {
         return employeeService.getEmployee();
     }
 
+    @GetMapping("/assets")
+    public List<Object[]> getEmployeeAssets() {
+        System.out.println(employeeService.getEmployeeAssets());
+        return employeeService.getEmployeeAssets();
+    }
+
     @PostMapping
     public void addEmployee(@RequestBody Employee employee){
         employeeService.addEmployee(employee);

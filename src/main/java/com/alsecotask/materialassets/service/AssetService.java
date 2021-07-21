@@ -6,6 +6,7 @@ import com.alsecotask.materialassets.model.Employee;
 import com.alsecotask.materialassets.repository.AssetRepository;
 import com.alsecotask.materialassets.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,13 +24,9 @@ public class AssetService {
         return assetRepository.count();
     }
 
-    public Long getCountById(Long id){
-        return assetRepository.countAssetByEmployee_Id(id);
-    }
-
-    public List<Object[]> getAssetsByEmployee(){
-       return assetRepository.getAssetsByEmployee();
-    }
+//    public Long getCountById(Long id){
+//        return assetRepository.countAssetByEmployee_Id(id);
+//    }
 
     public Asset findByName(String name){
        return assetRepository.findByNameQuery(name);
