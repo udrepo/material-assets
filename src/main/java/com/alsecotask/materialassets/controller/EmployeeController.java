@@ -70,11 +70,6 @@ public class EmployeeController {
 
     @PutMapping("/{id}")
     public Optional<Employee> updateEmployee(@PathVariable UUID id, @RequestBody Employee employeeRequest) {
-        return employeeRepository.findById(id).map(employee -> {
-            employee.setFirstName(employeeRequest.getFirstName());
-            employee.setLastName(employeeRequest.getLastName());
-            employee.setAssets(employeeRequest.getAssets());
-            return employeeRepository.save(employee);
-        });
+        return employeeService.updateEmployeeById(id, employeeRequest);
     }
 }

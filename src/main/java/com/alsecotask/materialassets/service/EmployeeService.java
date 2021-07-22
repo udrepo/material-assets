@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @AllArgsConstructor
 @Service
@@ -46,11 +48,13 @@ public class EmployeeService {
     }
 
 
-    public String
-    updateEmployeeById(String id){
-        employeeRepository.deleteEmployeeById(id);
-        employeeRepository.deleteEmployeeByIdCustom(id);
-        return "Updated Successfully";
+    public Optional<Employee> updateEmployeeById(UUID id, Employee employeeRequest){
+        return employeeRepository.findById(id).map(employee -> {
+            employee.setFirstName(employeeRequest.getFirstName());
+            employee.setLastName(employeeRequest.getLastName());
+            employee.setAssets(employeeRequest.getAssets());
+            return employeeRepository.save(employee);
+        });
     }
 
     public String deleteEmployeeById(String id){

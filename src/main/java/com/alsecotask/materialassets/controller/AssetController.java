@@ -2,6 +2,7 @@ package com.alsecotask.materialassets.controller;
 
 
 import com.alsecotask.materialassets.model.Asset;
+import com.alsecotask.materialassets.model.Employee;
 import com.alsecotask.materialassets.service.AssetService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -9,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @AllArgsConstructor
 @RestController
@@ -54,5 +57,9 @@ public class AssetController {
         return assetService.deleteAssetById(id);
     }
 
+    @PutMapping("/{id}")
+    public Optional<Asset> updateAsset(@PathVariable UUID id, @RequestBody Asset assetRequest) {
+        return assetService.updateAssetById(id, assetRequest);
+    }
 
 }
