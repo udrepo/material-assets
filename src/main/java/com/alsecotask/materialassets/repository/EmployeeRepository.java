@@ -1,5 +1,6 @@
 package com.alsecotask.materialassets.repository;
 
+import com.alsecotask.materialassets.model.Asset;
 import com.alsecotask.materialassets.model.Employee;
 import com.alsecotask.materialassets.model.EmployeeAsset;
 import org.springframework.data.domain.Page;
@@ -18,7 +19,17 @@ public interface EmployeeRepository extends JpaRepository<Employee, UUID> {
 
     Page<Employee> findAll(Pageable pageable);
 
-    @Query("select new com.alsecotask.materialassets.model.EmployeeAsset(e .id, e .firstName, e .lastName, sum(a.price), count(a .price)) FROM Employee e join e.assets a group by e.id")
+    @Query(value = "SELECT * FROM Employee WHERE id = ?1", nativeQuery = true)
+    Employee findById(String id);
+
+    @Query(value = "SELECT employee.*\n" +
+            "FROM employee INNER JOIN asset\n" +
+            "ON employee.id = asset.employee_id\n" +
+            "group by employee.id",
+            nativeQuery = true)
+     List<Employee> findAllByAssetsContains();
+
+    @Query("select new com.alsecotask.materialassets.model.EmployeeAsset(e .id, e .firstName, e .lastName, sum(a.price), count(a .price)) FROM Employee e left join e.assets a group by e.id")
     Page<EmployeeAsset> getEmployeeAssets(Pageable pageable);
 
 
@@ -33,6 +44,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, UUID> {
             "WHERE employee.id = ?1 group by employee.id",
             nativeQuery = true)
     List<Object> getEmployeeAssetsById(String id);
+
+
 
     @Transactional
     @Modifying

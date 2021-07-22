@@ -18,8 +18,17 @@ public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 
-    public Page<Employee> getEmployee(Pageable pageable) {
+    public Page<Employee> getAllEmployee(Pageable pageable) {
         return employeeRepository.findAll(pageable);
+    }
+
+    public List<Employee> getAllEmployeeWithAssets() {
+        return employeeRepository.findAllByAssetsContains();
+    }
+
+
+    public Employee getEmployeeById(String id){
+        return employeeRepository.findById(id);
     }
 
     public Page<EmployeeAsset> getEmployeeAssets(Pageable pageable){
