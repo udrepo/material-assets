@@ -48,4 +48,11 @@ public class AssetController {
     }
 
 
+
+    @DeleteMapping("/{id}")
+    public @ResponseBody String deleteAssetById(@PathVariable (value = "id") String id) {
+        return assetService.deleteAssetById(id);
+    }
+
+
 }

@@ -4,13 +4,12 @@ import com.alsecotask.materialassets.model.Employee;
 import com.alsecotask.materialassets.model.EmployeeAsset;
 import com.alsecotask.materialassets.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-import java.util.UUID;
 
 @AllArgsConstructor
 @Service
@@ -47,9 +46,24 @@ public class EmployeeService {
     }
 
 
-    public void deleteEmployeeById(String id){
+    public String
+    updateEmployeeById(String id){
         employeeRepository.deleteEmployeeById(id);
         employeeRepository.deleteEmployeeByIdCustom(id);
+        return "Updated Successfully";
     }
+
+    public String deleteEmployeeById(String id){
+        employeeRepository.deleteEmployeeById(id);
+        employeeRepository.deleteEmployeeByIdCustom(id);
+        return "Deleted Successfully";
+    }
+
+    public String updateEmployeeAsset(){
+        employeeRepository.updateAsset();
+        return "Updated successfully";
+    }
+
+
 
 }

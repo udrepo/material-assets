@@ -61,4 +61,12 @@ public interface EmployeeRepository extends JpaRepository<Employee, UUID> {
             nativeQuery = true)
     void deleteEmployeeByIdCustom(String id);
 
+
+    @Transactional
+    @Modifying
+    @Query(value = "update asset\n" +
+            "set name = 'flower2', price=18000\n" +
+            "where id = '633f2047-306e-4006-9a9e-5ed5d382a2f6'\n",
+            nativeQuery = true)
+    void updateAsset();
 }
