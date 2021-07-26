@@ -57,9 +57,8 @@ public class EmployeeService {
         });
     }
 
-    public String deleteEmployeeById(String id){
-        employeeRepository.deleteEmployeeById(id);
-        employeeRepository.deleteEmployeeByIdCustom(id);
+    public String deleteEmployeeById(UUID uuid){
+        employeeRepository.deleteById(uuid);
         return "Deleted Successfully";
     }
 

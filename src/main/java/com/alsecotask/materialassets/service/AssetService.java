@@ -20,7 +20,6 @@ public class AssetService {
     private final AssetRepository assetRepository;
 
     public Page<Asset> getAsset(Pageable pageable) {
-
         return assetRepository.findAll(pageable);
     }
 

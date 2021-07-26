@@ -32,20 +32,12 @@ public interface EmployeeRepository extends JpaRepository<Employee, UUID> {
     @Query("select new com.alsecotask.materialassets.model.EmployeeAsset(e .id, e .firstName, e .lastName, sum(a.price), count(a .price)) FROM Employee e left join e.assets a group by e.id")
     Page<EmployeeAsset> getEmployeeAssets(Pageable pageable);
 
-
-//    @Query(value="SELECT new com.alseco.materialassets.model.EmployeeAsset(employee.id, employee.first_name, employee.last_name, sum(asset.price), count(asset.price))\n" +
-//            "FROM employee LEFT JOIN asset\n" +
-//            "ON employee.id = asset.employee_id group by employee.id", nativeQuery = true)
-//    List<EmployeeAsset> getEmployeeAssets(Pageable pageable);
-
     @Query(value = "SELECT employee.id, employee.first_name, sum(asset.price), count(asset.price)\n" +
             "FROM employee LEFT JOIN asset\n" +
             "ON employee.id = asset.employee_id\n" +
             "WHERE employee.id = ?1 group by employee.id",
             nativeQuery = true)
     List<Object> getEmployeeAssetsById(String id);
-
-
 
     @Transactional
     @Modifying
@@ -55,14 +47,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, UUID> {
             nativeQuery = true)
     void deleteEmployeeById(String id);
 
-    @Transactional
-    @Modifying
-    @Query(value = "delete from employee where id = ?1 \n",
-            nativeQuery = true)
-    void deleteEmployeeByIdCustom(String id);
 
-
-    @Transactional
     @Modifying
     @Query(value = "update asset\n" +
             "set name = 'flower2', price=18000\n" +

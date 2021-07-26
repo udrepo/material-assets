@@ -56,10 +56,9 @@ public class EmployeeController {
         employeeService.addAllEmployee(employee);
     }
 
-
     @DeleteMapping("/{id}")
-    public @ResponseBody String deleteEmployeeById(@PathVariable (value = "id") String id) {
-       return employeeService.deleteEmployeeById(id);
+    public @ResponseBody String deleteNEmployeeById(@PathVariable (value = "id") UUID id) {
+        return employeeService.deleteEmployeeById(id);
     }
 
     @PostMapping("/upd")

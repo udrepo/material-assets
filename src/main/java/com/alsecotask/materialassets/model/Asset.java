@@ -21,7 +21,6 @@ public class Asset {
     private UUID id;
     private String name;
     private double price;
-    @JsonBackReference
     @ManyToOne(fetch= FetchType.EAGER)
     @JoinColumn(name="employee_id", referencedColumnName="id")
     private Employee employee;
