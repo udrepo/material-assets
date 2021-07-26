@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import javax.transaction.Transactional;
-import java.util.List;
 import java.util.UUID;
 
 public interface AssetRepository extends JpaRepository<Asset, UUID> {

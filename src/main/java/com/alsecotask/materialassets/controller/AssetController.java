@@ -2,7 +2,6 @@ package com.alsecotask.materialassets.controller;
 
 
 import com.alsecotask.materialassets.model.Asset;
-import com.alsecotask.materialassets.model.Employee;
 import com.alsecotask.materialassets.service.AssetService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -30,10 +29,6 @@ public class AssetController {
         return assetService.getCount();
     }
 
-//    @GetMapping("/count/{id}")
-//    public Long getCountById(@PathVariable (value = "id") Long id) {
-//        return assetService.getCountById(id);
-//    }
 
     @GetMapping("/{name}")
     public Asset getByName(@PathVariable (value = "name") String name) {

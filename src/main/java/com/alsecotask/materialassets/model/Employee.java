@@ -29,10 +29,4 @@ public class Employee {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
-    public Employee(String firstName, String lastName, List<Asset> assets) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.assets = assets;
-    }
 }

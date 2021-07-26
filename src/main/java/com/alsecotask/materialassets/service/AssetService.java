@@ -2,7 +2,6 @@ package com.alsecotask.materialassets.service;
 
 
 import com.alsecotask.materialassets.model.Asset;
-import com.alsecotask.materialassets.model.Employee;
 import com.alsecotask.materialassets.repository.AssetRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;

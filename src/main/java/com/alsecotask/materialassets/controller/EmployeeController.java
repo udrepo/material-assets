@@ -2,7 +2,6 @@ package com.alsecotask.materialassets.controller;
 
 import com.alsecotask.materialassets.model.Employee;
 import com.alsecotask.materialassets.model.EmployeeAsset;
-import com.alsecotask.materialassets.repository.EmployeeRepository;
 import com.alsecotask.materialassets.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,7 +18,7 @@ import java.util.UUID;
 public class EmployeeController {
 
     private  final EmployeeService employeeService;
-    private final EmployeeRepository employeeRepository;
+
     @GetMapping
     public Page<Employee> getEmployee(Pageable pageable) {
         return employeeService.getAllEmployee(pageable);

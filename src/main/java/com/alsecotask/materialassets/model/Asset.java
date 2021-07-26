@@ -1,6 +1,5 @@
 package com.alsecotask.materialassets.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import org.hibernate.annotations.Type;
 
@@ -24,10 +23,4 @@ public class Asset {
     @ManyToOne(fetch= FetchType.EAGER)
     @JoinColumn(name="employee_id", referencedColumnName="id")
     private Employee employee;
-
-    public Asset(String name, double price, Employee employee) {
-        this.name = name;
-        this.price = price;
-        this.employee = employee;
-    }
 }
