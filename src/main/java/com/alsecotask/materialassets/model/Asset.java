@@ -8,11 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Table
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
+@Data
 public class Asset {
     @Id
     @GeneratedValue
