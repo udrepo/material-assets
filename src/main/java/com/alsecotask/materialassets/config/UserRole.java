@@ -11,7 +11,7 @@ import java.util.Set;
 @Getter
 public enum UserRole {
 
-    ADMIN(Sets.newHashSet(COURSE_READ, COURSE_WRITE, STUDENT_READ, STUDENT_WRITE));
+    ADMIN(Sets.newHashSet(ASSET_READ, ASSET_WRITE, EMPLOYEE_READ, EMPLOYEE_WRITE));
 
     private final Set<UserPermission> permissions;
 

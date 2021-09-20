@@ -6,10 +6,10 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum UserPermission {
-    STUDENT_READ("student:read"),
-    STUDENT_WRITE("student:write"),
-    COURSE_READ("course:read"),
-    COURSE_WRITE("course:write");
+    ASSET_READ("asset:read"),
+    ASSET_WRITE("asset:write"),
+    EMPLOYEE_READ("employee:read"),
+    EMPLOYEE_WRITE("employee:write");
 
     private final String permission;
 
